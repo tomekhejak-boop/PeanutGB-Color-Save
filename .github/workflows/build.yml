@@ -10,7 +10,7 @@ jobs:
       - name: Install toolchain
         uses: numworks/setup-arm-toolchain@2020-q2
       - name: Run make build
-        run: make build
+  run: make -C PeanutGB_Color_7_Save_Shortcut_FLAT build
       - name: Run make check
         run: make check
       - name: Upload nwa
