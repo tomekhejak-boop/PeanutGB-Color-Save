@@ -1,0 +1,22 @@
+name: Build
+on: [pull_request, push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install toolchain
+        uses: numworks/setup-arm-toolchain@2020-q2
+      - name: Run make build
+        run: make build
+      - name: Run make check
+        run: make check
+      - name: Upload nwa
+        uses: actions/upload-artifact@v4.6.1
+        with:
+          name: "peanutgb"
+          path: "output/peanutgb.nwa"
+          if-no-files-found: error
+          retention-days: 30
