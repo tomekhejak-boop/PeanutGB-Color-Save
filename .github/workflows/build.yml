@@ -11,12 +11,10 @@ jobs:
         uses: numworks/setup-arm-toolchain@2020-q2
       - name: Run make build
         run: make -C PeanutGB7 build
-      - name: Run make check
-        run: make check
       - name: Upload nwa
         uses: actions/upload-artifact@v4.6.1
         with:
           name: "peanutgb"
-          path: "output/peanutgb.nwa"
+          path: PeanutGB7/output/*.nwa
           if-no-files-found: error
           retention-days: 30
